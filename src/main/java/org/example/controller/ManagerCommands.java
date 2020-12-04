@@ -19,6 +19,7 @@ private final HashMap<String, Command> commands;
         commands.put("chooseTariff", new ChooseTariffCommand());
         commands.put("deposit", new DepositCommand());
         commands.put("profileInfo", new ShowProfileInfoCommand());
+        commands.put("showUsers", new ShowUsersCommand());
     }
 
     public Command getCommand(String key) {

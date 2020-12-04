@@ -23,14 +23,16 @@ public class View {
         System.out.println("1. Add tariff\n" +
                 "2. Delete tariff\n" +
                 "3. Edit tariff\n" +
-                "4. Exit\n");
+                "4. Show all tariffs\n" +
+                "5. Exit\n");
     }
 
     public void showEditSubscribersMenu() {
         System.out.println("1. Register user\n" +
                 "2. Block user\n" +
                 "3. Unblock user\n" +
-                "4. Exit\n");
+                "4. Show all users\n" +
+                "5. Exit\n");
     }
 
     public void showMainUserMenu() {
@@ -52,56 +54,56 @@ public class View {
     }
 
     public String getAuthData() {
-        return "authorization " + inputOfData.inputAuthData();
+        return inputOfData.inputAuthData();
     }
 
     public String getTariffToAdd() {
-        return "addTariff " + inputOfData.inputTariffToAdd();
+        return inputOfData.inputTariffToAdd();
     }
 
     public String getTariffToDelete() {
-        return "deleteTariff " + inputOfData.inputTariffToDelete();
+        return inputOfData.inputTariffToDelete();
     }
 
     public String getNewTariffPrice() {
-        return "editTariff " + inputOfData.inputTariffPrice();
+        return inputOfData.inputTariffPrice();
     }
 
     public String getUserNameToRegister() {
-        return "register " + inputOfData.inputUserName();
+        return inputOfData.inputUserName();
     }
 
     public String getUserToBlock() {
-        return "changeStatus block " + inputOfData.inputUserLogin("block");
+        return "block " + inputOfData.inputUserLogin("block");
     }
 
     public String getUserToUnblock() {
-        return "changeStatus unblock " + inputOfData.inputUserLogin("unblock");
+        return "unblock " + inputOfData.inputUserLogin("unblock");
     }
 
-    public String getTariffSortType() {
+    public String getSortType() {
         System.out.println("1. Show by name(ascending)\n" +
                 "2. Show by name(descending)\n" +
-                "3. Show by price\n");
+                "3. Show by sum\n");
         int intCommand = getCommand("3");
         switch (intCommand) {
             case 1:
-                return "showTariffs asc";
+                return "asc";
             case 2:
-                return "showTariffs desc";
+                return "desc";
             case 3:
-                return "showTariffs price";
+                return "price";
             default:
                 return "";
         }
     }
 
     public String getTariffToChoose() {
-        return "chooseTariff " + inputOfData.inputTariffToChoose();
+        return inputOfData.inputTariffToChoose();
     }
 
     public String getDepositSum() {
-        return "deposit " + inputOfData.inputDepositSum();
+        return String.valueOf(inputOfData.inputDepositSum());
     }
 
     public void showMessage(String string) {

@@ -11,12 +11,17 @@ public class DepositService {
         subscriberDao = new SubscriberDao(Database.connection);
     }
 
-    public void topUpAccount(double depositSum, String userLogin) {
+    public boolean topUpAccount(double depositSum, String userLogin) {
         Subscriber currentSubscriber = subscriberDao.getByLogin(userLogin);
 
         currentSubscriber.setBalance(currentSubscriber.getBalance() + depositSum);
         subscriberDao.changeBalance(currentSubscriber);
 
-
+        if (currentSubscriber.getBalance() >= 0) {
+            currentSubscriber.setActive(true);
+            subscriberDao.update(currentSubscriber);
+            return true;
+        }
+        return false;
     }
 }

@@ -13,8 +13,8 @@ public class ChangeUserStatusCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-        String action = description.split(" ")[1];
-        String userLogin = description.split(" ")[2];
+        String action = description.split(" ")[0];
+        String userLogin = description.split(" ")[1];
         boolean wasChanged = false;
 
         switch (action) {

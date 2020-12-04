@@ -13,7 +13,7 @@ public class DeleteTariffCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-        String tariffName = description.split(" ")[1];
+        String tariffName = description.split(" ")[0];
         if (tariffService.deleteTariff(tariffName)) {
             view.showMessage("Tariff was successfully deleted");
         } else {

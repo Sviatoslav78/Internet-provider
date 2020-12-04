@@ -6,6 +6,7 @@ public class Tariff {
     private double price;
 
     public static Tariff EMPTY;
+
     static {
         EMPTY = new Tariff(ServiceType.EMPTY, "EMPTY", -1);
     }
@@ -45,10 +46,8 @@ public class Tariff {
 
     @Override
     public String toString() {
-        return "Tariff{" +
-                "serviceType=" + serviceType +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                '}';
+        return "Service type: " + serviceType + "\n" +
+                "Name: " + name + "\n" +
+                "Price: " + price + "\n";
     }
 }

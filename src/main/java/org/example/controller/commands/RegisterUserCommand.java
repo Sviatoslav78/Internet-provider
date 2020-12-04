@@ -13,7 +13,7 @@ public class RegisterUserCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-        String newUserName = description.split(" ")[1];
+        String newUserName = description.split(" ")[0];
         registerService.registerUser(newUserName);
         view.showMessage("User was successfully registered");
     }

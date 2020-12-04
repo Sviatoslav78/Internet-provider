@@ -19,19 +19,32 @@ public class SubscriberTariffService {
         subscriberDao = new SubscriberDao(Database.connection);
     }
 
-    public boolean chooseTariff (String tariffName, String userLogin) {
+    public String chooseTariff(String tariffName, String userLogin) {
         Tariff tariff = tariffDao.getByName(tariffName);
         Subscriber subscriber = subscriberDao.getByLogin(userLogin);
 
-        if (!tariff.getName().equals("EMPTY") &&
-        subscriber.getBalance() - tariff.getPrice() > 0) {
-            subscriberTariffDao.save(new SubscriberTariff(userLogin, tariffName));
-            subscriber.setBalance(subscriber.getBalance() - tariff.getPrice());
-            return true;
+        if (!subscriber.isActive()) {
+            return "inactive";
+        }
+
+        if (tariff.getName().equals("EMPTY")) {
+            return "noTariff";
+        } else {
+            if (subscriber.getBalance() - tariff.getPrice() > 0) {
+                subscriberTariffDao.save(new SubscriberTariff(userLogin, tariffName));
+                subscriber.setBalance(subscriber.getBalance() - tariff.getPrice());
+                subscriberDao.changeBalance(subscriber);
+                return "ok";
+            }
         }
         subscriber.setActive(false);
         subscriberDao.update(subscriber);
-        return false;
+
+        subscriberTariffDao.save(new SubscriberTariff(userLogin, tariffName));
+        subscriber.setBalance(subscriber.getBalance() - tariff.getPrice());
+        subscriberDao.changeBalance(subscriber);
+
+        return "noMoney";
 
     }
 }

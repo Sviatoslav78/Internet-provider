@@ -13,8 +13,8 @@ public class EditTariffCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-        String tariffName = description.split(" ")[1];
-        int newTariffPrice = Integer.parseInt(description.split(" ")[2]);
+        String tariffName = description.split(" ")[0];
+        int newTariffPrice = Integer.parseInt(description.split(" ")[1]);
 
         if (tariffService.changeTariffPrice(tariffName, newTariffPrice)) {
             view.showMessage("Price of the tariff was successfully updated");

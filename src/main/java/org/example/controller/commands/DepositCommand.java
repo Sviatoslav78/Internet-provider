@@ -13,10 +13,14 @@ public class DepositCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-        double depositSum = Double.parseDouble(description.split(" ")[1]);
-        String userLogin = description.split(" ")[2];
+        double depositSum = Double.parseDouble(description.split(" ")[0]);
+        String userLogin = description.split(" ")[1];
 
-        depositService.topUpAccount(depositSum, userLogin);
-        view.showMessage("Transaction finished successfully");
+        if (depositService.topUpAccount(depositSum, userLogin)) {
+            view.showMessage("Transaction finished successfully, your account status is active now");
+        } else {
+            view.showMessage("Transaction finished successfully, but your account is still blocked");
+        }
+
     }
 }

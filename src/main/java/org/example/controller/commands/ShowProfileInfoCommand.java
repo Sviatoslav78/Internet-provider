@@ -13,6 +13,6 @@ public class ShowProfileInfoCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-
+        view.showMessage(subscriberProfileService.getUserInfo(description));
     }
 }

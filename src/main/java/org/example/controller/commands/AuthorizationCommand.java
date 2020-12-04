@@ -15,8 +15,8 @@ public class AuthorizationCommand extends Command {
     @Override
     public void execute(View view, String description) {
 
-        String login = description.split(" ")[1];
-        String password = description.split(" ")[2];
+        String login = description.split(" ")[0];
+        String password = description.split(" ")[1];
 
         if (login.equals("admin123") && password.equals("admin123")) {
             view.showMessage("You are signed in as Admin");

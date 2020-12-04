@@ -84,13 +84,9 @@ public class Subscriber {
 
     @Override
     public String toString() {
-        return "Subscriber{" +
-//                "id=" + id +
-                ", name='" + name + '\'' +
-                ", active=" + active +
-                ", balance=" + balance +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+        return "Name: " + name + "\n" +
+                "Active account: " + active + "\n" +
+                "Balance: " + balance + "\n" +
+                "Login: " + login + "\n";
     }
 }

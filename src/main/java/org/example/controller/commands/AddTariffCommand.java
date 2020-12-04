@@ -15,9 +15,9 @@ public class AddTariffCommand extends Command {
 
     @Override
     public void execute(View view, String description) {
-        int serviceTypeNumber = Integer.parseInt(description.split(" ")[1]);
-        String tariffName = description.split(" ")[2];
-        int tariffPrice = Integer.parseInt(description.split(" ")[3]);
+        int serviceTypeNumber = Integer.parseInt(description.split(" ")[0]);
+        String tariffName = description.split(" ")[1];
+        int tariffPrice = Integer.parseInt(description.split(" ")[2]);
 
         ServiceType serviceType = ServiceType.values()[serviceTypeNumber];
 

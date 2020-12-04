@@ -19,7 +19,7 @@ public class ShowTariffsCommand extends Command {
     public void execute(View view, String description) {
         List<Tariff> tariffList = new ArrayList<>();
 
-        switch (description.split(" ")[1]) {
+        switch (description.split(" ")[0]) {
             case "asc":
                 tariffList = tariffService.getTariffsAsc();
                 break;
